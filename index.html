@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Power of Alternative Medicine
+    </title>
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes textFade {
+            0% { opacity: 0; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0; transform: scale(0.9); }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(-45deg, #1e3c72, #2a5298, #ffffff);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+
+        .animated-text {
+            transform: translate(-50%, -50%);
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 1rem;
+            font-weight: bold;
+            color: aqua;
+
+            animation: textFade 3s infinite;
+        }
+
+        #aff {
+            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        label{
+            color:aqua;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        let numprem=[];
+        let numimp=[];
+        let selectedNumbers = [];
+        let mx =prompt("Number Of Users ","20");
+        mx=Number(mx);
+        let nbp=0;
+        let nbim=0;
+        
+        
+        function choisir(){
+            let nb;
+            do {
+                    nb = Math.floor(Math.random() * mx) + 1;
+                    
+                    
+                } while (selectedNumbers.includes(nb));
+            return nb;
+        }
+        
+        function num1(){
+            
+            if (selectedNumbers.length === mx) {
+                selectedNumbers = [];
+                document.getElementById("num").innerText = "";
+                document.getElementById("num2").innerText = "";
+                selectedNumbers=[];
+                alert("all number choised")
+                nbp=0;
+                nbim=0;
+                return;
+            }
+            else{
+                let shuffled;
+                shuffled=choisir();
+                nbp++;
+                numprem.push(shuffled);
+                selectedNumbers.push(shuffled);
+                let ch=document.getElementById("num").innerText;
+                let ch2=document.getElementById("num2").innerText;
+                document.getElementById("num2").style.color="red";
+                document.getElementById("num2").innerHTML=ch2+" "+ch+" ";
+                document.getElementById("num").style.color="green";
+                document.getElementById("num").innerText =shuffled;
+        }}
+        
+    </script>
+</head>
+<body>
+    
+    <div class="animated-text"><h2>The Power of Alternative Medicine</h2></div>
+        <tr>
+    <table width="60%" border="2">
+        <tr>
+            <td width="20%">
+                
+                <center><button onclick="num1()">Choose number</button></center>
+            </td>
+            <td width="40%"> <center><h2><label>Number :</label></h2></center> <h1><strong id="num"></strong></h1></td>
+            <td width="40%"><center><h2><label>finish:</label></h2></center> <h1><strong id="num2"></strong></h1></td>
+        </tr>
+    </table>
+    <iframe src="Q1.html" frameborder="1" name="aff" id="aff" width="75%" height="300px"></iframe>
+</body>
+</html>

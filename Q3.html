@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz The Power of Alternative Medicine
+    </title>
+    <style>
+        body { color: blue; }
+        #result { font-weight: bold; }
+        #nov {
+            background-color: transparent;
+            width: 6%;
+            border-color: transparent;
+            color: green;
+        }
+    </style>
+   <script>
+  function verif(event) {
+            event.preventDefault(); // Empêche le rechargement de la page
+            let choix = document.querySelector('input[name="choix"]:checked');
+            let result = document.getElementById("result");
+
+            if (!choix) {
+                result.innerHTML = "Mandatory choice !";
+                result.style.color = "red";
+            } else {
+                if(choix.value == "B") {
+                    result.innerHTML = "Selected answer : " + choix.value + " is true";
+                    result.style.color = "green";
+                    document.getElementById("nov").value="-->";
+                    // Créer un bouton "Continuer"
+                    let continuerButton = document.createElement("button");
+                    continuerButton.innerText = "next";
+                    continuerButton.onclick = function() {
+                        // Rediriger vers la prochaine page ou effectuer une action à la suite
+                        window.location.href = "Q4.html"; // Remplacer par le lien approprié
+                    };
+
+                    // Ajouter le bouton à la page
+                    document.getElementById("ajou").appendChild(continuerButton);
+
+                } else {
+                    result.innerHTML = "Selected answer : " + choix.value + " sorry until next time";
+                    result.style.color = "red";
+                }
+            }
+        }
+</script>
+</head>
+<body>
+    <form action="Q4.html" onsubmit="verif(event)">
+        <table width="100%">
+            <tr>
+                <td width="50%">
+                    <h3> What ancient healing traditions are mentioned as influencing modern alternative medicine ?</h3>
+                    <ul>
+                        <li><input type="radio" name="choix" value="A"> A) Greek and Roman Medicine</li>
+                        <li><input type="radio" name="choix" value="B"> B) Ayurveda and Traditional Chinese Medicine</li>
+                        <li><input type="radio" name="choix" value="C"> C) Homeopathy and Chiropractic</li>
+                        <li><input type="radio" name="choix" value="D"> D) Egyptian and Aztec practices</li>
+                    </ul>
+                    <br>
+                    <div id="ajou"><button onclick="verif(event)">Check</button><input type="button" id="nov" name="nov"></div>
+                    
+                </td>
+                <td>
+                    <center><strong id="result"></strong></center>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
